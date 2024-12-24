@@ -1,4 +1,4 @@
-import "./App.css";
+import "./css/App.css";
 import { Index } from "../pages/PortedIndex";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./Navbar.tsx";
