@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { build, defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { createHtmlPlugin } from "vite-plugin-html";
 
@@ -27,6 +27,9 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    outDir: "build",
+  },
   root: "./",
   publicDir: "public",
 });
