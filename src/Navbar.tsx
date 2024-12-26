@@ -1,9 +1,9 @@
-export function Navbar() {
+export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg">
       <a className="navbar-logo" href="index.html">
         <img
-          src="assets/img/UCP3-Logo-groß.png"
+          src="/src/assets/images/UCP3-Logo-groß.png"
           alt="Unofficial Crusader Patch"
           width="50"
           height="auto"
