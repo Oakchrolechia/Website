@@ -1,4 +1,4 @@
-import { build, defineConfig } from "vite";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { createHtmlPlugin } from "vite-plugin-html";
 
@@ -27,9 +27,22 @@ export default defineConfig({
       },
     }),
   ],
+  envDir: "./",
+  envPrefix: "APP_",
   build: {
     outDir: "build",
+    assetsDir: "assets",
+    rollupOptions: {
+      output: {
+        chunkFileNames: "js/[name]-[hash].js",
+        entryFileNames: "js/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash][extname]",
+      },
+    },
   },
   root: "./",
   publicDir: "public",
+  optimizeDeps: {
+    include: ["react", "react-dom", "react-router-dom"],
+  },
 });
