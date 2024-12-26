@@ -8,7 +8,8 @@
     "target": "ESNext",
     "module": "ESNext",
     "strict": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "moduleResolution": "node" // Ensure this is set to node
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
