@@ -1,5 +1,5 @@
 import js from "@eslint/js";
-import tseslint from "@typescript-eslint/eslint-plugin";
+import { configs } from "@typescript-eslint/eslint-plugin";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -25,28 +25,11 @@ export default [
       "plugin:@typescript-eslint/recommended",
       "plugin:react/recommended",
       "plugin:react-hooks/recommended",
-      ...tseslint.configs.recommendedTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
     ],
-    files: ["**/*.{ts,tsx}"],
-    languageOptions: {
-      parser: typescript,
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-        ecmaVersion: 2020,
-        sourceType: "module",
-        ecmaFeatures: {
-          jsx: true,
-        },
+    settings: {
+      react: {
+        version: "detect",
       },
-      globals: globals.browser,
-    },
-    plugins: {
-      "@typescript-eslint": tseslint,
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-      react: react,
     },
     rules: {
       ...react.configs.recommended.rules,
@@ -61,9 +44,14 @@ export default [
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
     },
-    settings: {
-      react: {
-        version: "18.3",
+  },
+  configs.recommendedTypeChecked || {}, // Fallback to an empty object if undefined
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        project: "./tsconfig.json",
       },
     },
   },
